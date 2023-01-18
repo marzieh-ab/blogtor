@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import { CookiesProvider } from "react-cookie";
 import './index.css';
 import App from './App';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 
 
 
 
 import {BrowserRouter} from 'react-router-dom'
+const queryClient = new QueryClient()
 
 
 
@@ -16,7 +24,11 @@ import {BrowserRouter} from 'react-router-dom'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
         <BrowserRouter>
-          <App/>
+        <QueryClientProvider client={queryClient}>
+        <App/>
+
+        </QueryClientProvider>
+        
         </BrowserRouter>
 
    
